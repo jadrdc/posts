@@ -33,6 +33,7 @@ class OnlineDataSourceImp(
                         offLineSource.insertPosts(filteredPosts)
                         filteredPosts.map { it.toDomainModel() }
                     } else {
+                        offLineSource.insertPosts(post = posts.toOfflineModel())
                         posts.toDomain()
                     }
                     OperationResult.Success(result)
