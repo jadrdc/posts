@@ -3,6 +3,7 @@ package com.post.data.impl
 import com.post.core.util.OperationResult
 import com.post.data.local.dao.PostsDao
 import com.post.data.mappers.toDomain
+import com.post.data.mappers.toDomainModel
 import com.post.data.mappers.toOfflineModel
 import com.post.data.services.PostService
 import com.post.domain.interfaces.PostRemoteDataSource
@@ -19,9 +20,17 @@ class OnlineDataSourceImp(
             return if (response.isSuccessful) {
                 val posts = response.body()
                 if (posts != null) {
-                    val postEntity = posts.toDomain()
-                    offLineSource.insertPosts(posts.toOfflineModel())
-                    OperationResult.Success(postEntity)
+                    val deletedPosts = offLineSource.getDeletedPost()
+                    val filteredPosts = posts.toOfflineModel().filterNot { offlinePost ->
+                        deletedPosts.any { deletedPost ->
+                            offlinePost.creationDate == deletedPost.creationDate &&
+                                    offlinePost.author == deletedPost.author &&
+                                    offlinePost.description == deletedPost.description &&
+                                    offlinePost.url == deletedPost.url
+                        }
+                    }
+                    offLineSource.insertPosts(filteredPosts)
+                    OperationResult.Success(filteredPosts.map { it.toDomainModel() })
                 } else {
                     OperationResult.Error(Exception("Empty List"))
                 }

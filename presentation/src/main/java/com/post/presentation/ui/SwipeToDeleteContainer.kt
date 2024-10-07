@@ -30,7 +30,7 @@ fun <T> SwipeToDeleteContainer(
         confirmValueChange = {
             when (it) {
                 SwipeToDismissBoxValue.EndToStart -> {
-                    isRemoved = true
+                    onDelete(item)
                     return@rememberSwipeToDismissBoxState true
                 }
 
@@ -39,20 +39,20 @@ fun <T> SwipeToDeleteContainer(
         },
     )
 
-    LaunchedEffect(key1 = isRemoved) {
+ /*   LaunchedEffect(key1 = isRemoved) {
         if (isRemoved) {
             delay(animationDuration.toLong())
             onDelete(item)
         }
-    }
+    }*/
 
-    AnimatedVisibility(
+   /* AnimatedVisibility(
         visible = !isRemoved,
         exit = shrinkVertically(
             animationSpec = tween(durationMillis = animationDuration),
             shrinkTowards = Alignment.Top
         ) + fadeOut()
-    ) {
+    ) {*/
         SwipeToDismissBox(
             state = state,
             backgroundContent = {
@@ -61,5 +61,5 @@ fun <T> SwipeToDeleteContainer(
             content = { content(item) },
             enableDismissFromStartToEnd = false
         )
-    }
+   // }
 }

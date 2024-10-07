@@ -17,4 +17,8 @@ class PostRepositoryImpl(
     override suspend fun getOfflinePosts(): OperationResult<List<Post>> {
         return localDataSource.getPosts()
     }
+
+    override suspend fun delete(post: Post): OperationResult<Boolean> {
+        return localDataSource.delete(post)
+    }
 }

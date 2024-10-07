@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.post.core.util.NetWorkStatus
 import com.post.domain.models.Post
+import com.post.domain.usecase.DeletePostUseCase
 import com.post.domain.usecase.GetPostOfflineUseCase
 import com.post.domain.usecase.GetPostUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 class PostViewModel(
     private val getPostUseCase: GetPostUseCase,
     private val getOfflinePostUseCase: GetPostOfflineUseCase,
+    private val deletePostUseCase: DeletePostUseCase,
     private val netWorkStatus: NetWorkStatus
 ) :
     ViewModel(
@@ -51,8 +53,8 @@ class PostViewModel(
 
     fun onDelete(post: Post) {
         viewModelScope.launch {
+            deletePostUseCase(post)
             _uiState.value = uiState.value.copy(posts = uiState.value.posts.filter { it != post })
-
         }
     }
 }

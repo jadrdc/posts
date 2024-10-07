@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,8 +23,8 @@ fun PostListScreen(viewModel: PostViewModel = koinViewModel(), onNavigate: (Post
         modifier = Modifier.padding(top = 32.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        items(count = state.posts.size, key = { it }) { index ->
-            val post = state.posts[index]
+        itemsIndexed(items = state.posts,
+            key = { _, item -> item.hashCode() }) { index, post ->
             SwipeToDeleteContainer(
                 item = post,
                 onDelete = {

@@ -5,4 +5,5 @@ import com.post.domain.models.Post
 
 interface PostLocalDataSource {
     suspend fun getPosts(): OperationResult<List<Post>>
+    suspend fun delete(post: Post): OperationResult<Boolean>
 }
