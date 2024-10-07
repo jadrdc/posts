@@ -5,13 +5,14 @@ import com.post.data.local.dao.PostsDao
 import com.post.data.mappers.toDomain
 import com.post.data.mappers.toOfflineModel
 import com.post.data.services.PostService
-import com.post.domain.interfaces.PostDataSource
+import com.post.domain.interfaces.PostRemoteDataSource
 import com.post.domain.models.Post
-import java.lang.Exception
 
-class OnlineDataSourceImp(private val service: PostService,
-                          private val offLineSource: PostsDao) :
-    PostDataSource {
+class OnlineDataSourceImp(
+    private val service: PostService,
+    private val offLineSource: PostsDao
+) :
+    PostRemoteDataSource {
     override suspend fun getPosts(): OperationResult<List<Post>> {
         return try {
             val response = service.getPostList()

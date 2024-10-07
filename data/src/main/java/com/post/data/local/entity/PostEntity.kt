@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "posts")
 data class PostEntity(
     @PrimaryKey val id: Int,
-    var description: String,
-    var creationDate: String,
-    var author: String
+    val description: String,
+    val creationDate: String,
+    val author: String,
+    val url:String
 )

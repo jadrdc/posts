@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt") // Use 'id' to apply the kapt plugin
 }
 
 android {
@@ -41,8 +42,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation (libs.retrofit)
-    implementation (libs.koin.android)
-    implementation (libs.converter.gson)
-    implementation (libs.androidx.room.runtime)
+    implementation(libs.retrofit)
+    implementation(libs.koin.android)
+    implementation(libs.converter.gson)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)  // Use 'kapt' for Kotlin
+    implementation (libs.androidx.room.ktx)  // Or use the latest version
+
 }

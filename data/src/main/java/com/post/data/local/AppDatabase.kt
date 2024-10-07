@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.post.data.local.dao.PostsDao
 import com.post.data.local.entity.PostEntity
 
-@Database(entities = [PostEntity::class], version = 1)
+@Database(entities = [PostEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun postsDAO(): PostsDao
+    abstract val postsDAO: PostsDao
 }
