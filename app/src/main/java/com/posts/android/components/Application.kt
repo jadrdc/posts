@@ -1,6 +1,7 @@
 package com.posts.android.components
 
 import android.app.Application
+import com.post.core.di.coreDependencies
 import com.post.data.di.dataDependencyInjections
 import com.post.domain.di.domainDependencyInjection
 import com.post.presentation.di.viewModelModuleDepedency
@@ -17,7 +18,8 @@ class Application : Application() {
             modules(
                 dataDependencyInjections,
                 domainDependencyInjection,
-                viewModelModuleDepedency
+                viewModelModuleDepedency,
+                coreDependencies
             )
         }
     }

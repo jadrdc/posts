@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.post.domain.models.Post
+import com.post.domain.models.formatDate
 
 @Composable
 fun PostItem(post: Post, onClick: () -> Unit = {}, onSwipe: () -> Unit = {}) {
@@ -21,7 +22,7 @@ fun PostItem(post: Post, onClick: () -> Unit = {}, onSwipe: () -> Unit = {}) {
             .padding(horizontal = 16.dp)
             .clickable {
                 onClick()
-                       },
+            },
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
@@ -30,7 +31,7 @@ fun PostItem(post: Post, onClick: () -> Unit = {}, onSwipe: () -> Unit = {}) {
         )
         Text(
             fontWeight = FontWeight.Light,
-            text = "${post.author} - ${post.creationDate}"
+            text = "${post.author} - ${formatDate(post.creationDate)}"
         )
     }
 }

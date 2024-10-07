@@ -13,4 +13,8 @@ class PostRepositoryImpl(
     override suspend fun getPosts(): OperationResult<List<Post>> {
         return remoteDataSource.getPosts()
     }
+
+    override suspend fun getOfflinePosts(): OperationResult<List<Post>> {
+        return localDataSource.getPosts()
+    }
 }

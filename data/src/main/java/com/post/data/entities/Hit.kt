@@ -14,7 +14,7 @@ data class Hit(
     val points: Int,
     val story_id: Int,
     val story_text: String,
-    val story_title: String,
+    val story_title: String="",
     val story_url: String,
     val title: String,
     val updated_at: String,

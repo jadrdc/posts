@@ -9,8 +9,9 @@ fun PostListResponse.toDomain(): List<Post> {
         Post(
             id = index,
             author = model.author,
-            description = model.story_title.ifBlank { model.title },
-            creationDate = model.created_at, url =model.story_url
+            description = (model.story_title ?: model.title).ifBlank { model.title },
+            creationDate = model.created_at,
+            url = model.story_url?:model.url?:""
         )
     }
 }
@@ -20,10 +21,9 @@ fun PostListResponse.toOfflineModel(): List<PostEntity> {
         PostEntity(
             id = index,
             author = model.author,
-            description = model.story_title.ifBlank { model.title },
+            description = (model.story_title ?: model.title).ifBlank { model.title },
             creationDate = model.created_at,
-            url =model.story_url
-        )
+            url = model.story_url?:model.url?:""        )
     }
 }
 
@@ -32,7 +32,6 @@ fun PostEntity.toDomainModel(): Post {
         id = this.id,
         author = this.author,
         description = this.description,
-        creationDate = this.creationDate
-        , url =this.url
+        creationDate = this.creationDate, url = this.url
     )
 }
