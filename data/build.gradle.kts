@@ -36,7 +36,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+//    implementation(libs.material)
     implementation(project(":domain"))
     implementation(project(":core"))
     testImplementation(libs.junit)
@@ -47,6 +47,6 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)  // Use 'kapt' for Kotlin
-    implementation (libs.androidx.room.ktx)  // Or use the latest version
+    implementation(libs.androidx.room.ktx)  // Or use the latest version
 
 }

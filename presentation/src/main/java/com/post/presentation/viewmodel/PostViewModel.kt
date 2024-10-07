@@ -39,12 +39,25 @@ class PostViewModel(
             getOfflinePostUseCase()
         }
         when (result) {
-            is com.post.core.util.OperationResult.Error -> {}
+            is com.post.core.util.OperationResult.Error -> {
+
+            }
+
             is com.post.core.util.OperationResult.Success -> {
                 _uiState.value = uiState.value.copy(posts = result.data)
             }
         }
     }
+
+    fun onDelete(post: Post) {
+        viewModelScope.launch {
+            _uiState.value = uiState.value.copy(posts = uiState.value.posts.filter { it != post })
+
+        }
+    }
 }
 
-data class PostState(var posts: List<Post>)
+data class PostState(
+    var posts: List<Post>,
+    val error: Boolean = false
+)
