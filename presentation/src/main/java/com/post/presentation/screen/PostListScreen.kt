@@ -2,6 +2,7 @@ package com.post.presentation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -20,8 +21,8 @@ import org.koin.androidx.compose.koinViewModel
 fun PostListScreen(viewModel: PostViewModel = koinViewModel(), onNavigate: (Post) -> Unit) {
     val state = viewModel.uiState.collectAsState().value
     LazyColumn(
-        modifier = Modifier.padding(top = 32.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = Modifier
+            .padding(top = 32.dp), verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         itemsIndexed(items = state.posts,
             key = { _, item -> item.hashCode() }) { index, post ->

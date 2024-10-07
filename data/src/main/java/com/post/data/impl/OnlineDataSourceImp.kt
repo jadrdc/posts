@@ -21,16 +21,21 @@ class OnlineDataSourceImp(
                 val posts = response.body()
                 if (posts != null) {
                     val deletedPosts = offLineSource.getDeletedPost()
-                    val filteredPosts = posts.toOfflineModel().filterNot { offlinePost ->
-                        deletedPosts.any { deletedPost ->
-                            offlinePost.creationDate == deletedPost.creationDate &&
-                                    offlinePost.author == deletedPost.author &&
-                                    offlinePost.description == deletedPost.description &&
-                                    offlinePost.url == deletedPost.url
+                    val result = if (deletedPosts.isNotEmpty()) {
+                        val filteredPosts = posts.toOfflineModel().filterNot { offlinePost ->
+                            deletedPosts.any { deletedPost ->
+                                offlinePost.creationDate == deletedPost.creationDate &&
+                                        offlinePost.author == deletedPost.author &&
+                                        offlinePost.description == deletedPost.description &&
+                                        offlinePost.url == deletedPost.url
+                            }
                         }
+                        offLineSource.insertPosts(filteredPosts)
+                        filteredPosts.map { it.toDomainModel() }
+                    } else {
+                        posts.toDomain()
                     }
-                    offLineSource.insertPosts(filteredPosts)
-                    OperationResult.Success(filteredPosts.map { it.toDomainModel() })
+                    OperationResult.Success(result)
                 } else {
                     OperationResult.Error(Exception("Empty List"))
                 }
