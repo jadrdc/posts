@@ -1,4 +1,6 @@
 # Multi-Module Android Project
+<img width="441" alt="Screenshot 2024-10-07 at 6 57 37 PM" src="https://github.com/user-attachments/assets/d17d4384-a5a3-41e3-932b-32ea99c68f16">
+<img width="382" alt="Screenshot 2024-10-07 at 8 55 45 PM" src="https://github.com/user-attachments/assets/ae671acf-1440-4b82-93f1-6b439dd8c034">
 
 This project is built using a multi-module architecture with the MVVM pattern (Model-View-ViewModel). The project is structured to improve scalability, modularity, and maintainability. Each module has a specific responsibility, and the application layers are cleanly separated. The project also uses modern libraries and technologies such as Jetpack Compose, Koin, Flow, Room, and Retrofit.
 
