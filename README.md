@@ -59,6 +59,7 @@ Key Responsibilities:
 * Flow: For emitting asynchronous streams of data.
 * Room: Local database solution for managing offline data.
 * Retrofit: For making network requests.
+* Paging source for pagination.
 
 # App Startup: 
   The App module initializes the application by setting up Koin for dependency injection and any other configurations (like logging).
@@ -83,8 +84,8 @@ The project uses Koin for dependency injection. Dependencies are declared in mod
 ## Future Enhancements
 
 * Implement more complex caching strategies for offline handling.
-* Expand the domain logic with additional use cases.
 * Add more unit tests to improve test coverage.
-* Implement pluggin for graddle
+* Implement pluggin for graddle.
+  
 
 This project demonstrates a scalable and maintainable approach to building Android applications with MVVM and Jetpack Compose in a multi-module setup. It ensures clear separation of concerns, allowing easy testing and reusability of modules across projects.
