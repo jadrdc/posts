@@ -47,8 +47,8 @@ fun Post.toDeletedPost(): PostDeletedEntity {
     )
 }
 
-fun PostDeletedEntity.toDomain(): PostDeletedEntity {
-    return PostDeletedEntity(
+fun PostDeletedEntity.toDomain(): Post {
+    return Post(
         id = this.id,
         author = this.author,
         description = this.description,

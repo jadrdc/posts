@@ -1,6 +1,5 @@
 package com.post.data.local.dao
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -24,4 +23,7 @@ interface PostsDao {
 
     @Query("SELECT * FROM posts_deleted")
     suspend fun getDeletedPost(): List<PostDeletedEntity>
+
+    @Query("SELECT * FROM posts_deleted  LIMIT 20 OFFSET :offset")
+    suspend fun getDeletedPostPaginated(offset: Int): List<PostDeletedEntity>
 }

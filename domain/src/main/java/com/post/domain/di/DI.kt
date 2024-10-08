@@ -1,6 +1,8 @@
 package com.post.domain.di
 
+import com.post.domain.paging.PostOfflinePagingSourceFactory
 import com.post.domain.paging.PostPagingSourceFactory
+import com.post.domain.paging.PostsOfflinePagingSource
 import com.post.domain.paging.PostsPagingSource
 import com.post.domain.usecase.DeletePostUseCase
 import com.post.domain.usecase.GetPostOfflineUseCase
@@ -13,4 +15,6 @@ val domainDependencyInjection = module {
     single { DeletePostUseCase(get()) }
     factory { PostPagingSourceFactory(get()) }
     factory { PostsPagingSource(get()) }
+    factory { PostOfflinePagingSourceFactory(get()) }
+    factory { PostsOfflinePagingSource(get()) }
 }
