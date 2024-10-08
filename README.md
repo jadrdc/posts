@@ -61,6 +61,7 @@ Key Responsibilities:
 * Flow: For emitting asynchronous streams of data.
 * Room: Local database solution for managing offline data.
 * Retrofit: For making network requests.
+* Android Paging for endless scrolling and pagination.
 
 # App Startup: 
   The App module initializes the application by setting up Koin for dependency injection and any other configurations (like logging).
