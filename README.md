@@ -60,8 +60,6 @@ Key Responsibilities:
 * Room: Local database solution for managing offline data.
 * Retrofit: For making network requests.
 
-How It Works
-
 # App Startup: 
   The App module initializes the application by setting up Koin for dependency injection and any other configurations (like logging).
 
