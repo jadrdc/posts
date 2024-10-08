@@ -54,4 +54,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
     implementation(libs.material3)
+    implementation(libs.androidx.paging.common.ktx)
+    implementation(libs.androidx.paging.compose)// Use the latest version
+
 }

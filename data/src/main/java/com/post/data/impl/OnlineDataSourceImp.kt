@@ -14,9 +14,9 @@ class OnlineDataSourceImp(
     private val offLineSource: PostsDao
 ) :
     PostRemoteDataSource {
-    override suspend fun getPosts(): OperationResult<List<Post>> {
+    override suspend fun getPosts(page: Int): OperationResult<List<Post>> {
         return try {
-            val response = service.getPostList()
+            val response = service.getPostList(page)
             return if (response.isSuccessful) {
                 val posts = response.body()
                 if (posts != null) {

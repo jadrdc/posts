@@ -1,13 +1,12 @@
 package com.post.data.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.post.data.local.entity.PostDeletedEntity
 import com.post.data.local.entity.PostEntity
-import com.post.domain.models.Post
 
 @Dao
 interface PostsDao {
@@ -25,6 +24,4 @@ interface PostsDao {
 
     @Query("SELECT * FROM posts_deleted")
     suspend fun getDeletedPost(): List<PostDeletedEntity>
-
-
 }

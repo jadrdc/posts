@@ -6,6 +6,7 @@ import com.post.data.impl.OfflineDataSourceImp
 import com.post.data.impl.OnlineDataSourceImp
 import com.post.data.impl.PostRepositoryImpl
 import com.post.data.local.AppDatabase
+import com.post.domain.paging.PostsPagingSource
 import com.post.data.services.PostService
 import com.post.domain.interfaces.PostLocalDataSource
 import com.post.domain.interfaces.PostRemoteDataSource
@@ -16,6 +17,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import kotlin.math.sin
 
 private const val CONNECT_TIMEOUT = 10L
 private const val WRITE_TIMEOUT = 1L

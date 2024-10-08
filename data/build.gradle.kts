@@ -39,6 +39,7 @@ dependencies {
 //    implementation(libs.material)
     implementation(project(":domain"))
     implementation(project(":core"))
+    implementation(libs.androidx.paging.common.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -48,5 +49,4 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)  // Use 'kapt' for Kotlin
     implementation(libs.androidx.room.ktx)  // Or use the latest version
-
 }

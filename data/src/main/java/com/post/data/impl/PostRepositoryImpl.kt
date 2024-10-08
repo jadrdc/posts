@@ -10,8 +10,8 @@ class PostRepositoryImpl(
     private val localDataSource: PostLocalDataSource,
     private val remoteDataSource: PostRemoteDataSource
 ) : PostRepository {
-    override suspend fun getPosts(): OperationResult<List<Post>> {
-        return remoteDataSource.getPosts()
+    override suspend fun getPosts(page:Int): OperationResult<List<Post>> {
+        return remoteDataSource.getPosts(page)
     }
 
     override suspend fun getOfflinePosts(): OperationResult<List<Post>> {
