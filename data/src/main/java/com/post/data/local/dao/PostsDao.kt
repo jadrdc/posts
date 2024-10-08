@@ -12,18 +12,20 @@ interface PostsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPosts(post: List<PostEntity>)
 
-    @Query("SELECT * FROM posts")
-    suspend fun getPosts(): List<PostEntity>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDeletedPost(post: PostDeletedEntity)
 
     @Query("DELETE FROM posts WHERE author= :author AND creationDate= :date AND url =:url AND description=:description")
     suspend fun deleteEntity(author: String, date: String, url: String, description: String)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDeletedPost(post: PostDeletedEntity)
+    @Query("SELECT * FROM posts")
+    suspend fun getPosts(): List<PostEntity>
+
+    @Query("SELECT * FROM posts  LIMIT 20 OFFSET :offset")
+    suspend fun getDeletedPostPaginated(offset: Int): List<PostDeletedEntity>
 
     @Query("SELECT * FROM posts_deleted")
     suspend fun getDeletedPost(): List<PostDeletedEntity>
 
-    @Query("SELECT * FROM posts_deleted  LIMIT 20 OFFSET :offset")
-    suspend fun getDeletedPostPaginated(offset: Int): List<PostDeletedEntity>
+
 }
